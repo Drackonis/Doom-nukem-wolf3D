@@ -6,7 +6,7 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 13:15:56 by rkergast          #+#    #+#             */
-/*   Updated: 2020/01/29 17:32:00 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/01/29 17:48:19 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,10 @@ int			*fill_line(t_lines *line)
 		else if (isnb(*current))
 		{
 			tab[j] = atoi_modif(current);
-			printf("%d\n", tab[j]);
 			//tab[j] = ft_atoi(current);
 			j++;
-			while (isnb(*current) && *current)
-				current++;
+			//while (isnb(*current) && *current)
+			current++;
 		}
 	}
 	tab[j] = 0;

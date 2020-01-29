@@ -6,7 +6,7 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 14:20:04 by rkergast          #+#    #+#             */
-/*   Updated: 2020/01/29 17:39:14 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/01/29 17:47:55 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ void	printmap(t_data *data)
 	int i = 0;
 	int j = 0;
 
-	while(i <= data->nblin)
+	while(i < data->nblin)
 	{
 		printf("line %d |", i);
-		while(j <= data->nbcol)
+		j = 0;
+		while(j < data->nbcol)
 		{
 			printf("%d ", data->tab[i][j]);
 			j++;
