@@ -6,12 +6,19 @@
 #    By: rkergast <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/24 16:06:19 by rkergast          #+#    #+#              #
-#    Updated: 2020/01/23 16:14:51 by rkergast         ###   ########.fr        #
+#    Updated: 2020/01/29 16:41:52 by rkergast         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 define SRC_NAME
-main.c
+main.c\
+get_next_line.c\
+ft_get_next_line.c\
+ft_settab.c\
+ft_initmlx.c\
+ft_getkey.c\
+ft_setkey.c\
+ft_error.c
 endef
 
 CC = gcc
