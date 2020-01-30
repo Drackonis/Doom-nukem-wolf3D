@@ -6,7 +6,7 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 13:47:21 by rkergast          #+#    #+#             */
-/*   Updated: 2020/01/29 17:26:10 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/01/30 13:43:14 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void ft_setscreen(t_data *data)
 {
-	data->winheight = 540;
-	data->winwidth = 960;
+	data->winheight = 1080;
+	data->winwidth = 1920;
 }
 
 void ft_initwin(t_data *data)

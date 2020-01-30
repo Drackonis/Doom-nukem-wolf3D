@@ -6,7 +6,7 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 17:02:26 by rkergast          #+#    #+#             */
-/*   Updated: 2020/01/29 16:47:46 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:55:48 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,49 +24,22 @@
 # define BUFF_SIZE 1
 # define PROJ_MAX 1
 # define COLOR_MAX 1
+# define W_WIDTH 1280
+# define W_HEIGHT 720
 
 # define UP 126
 # define DOWN 125
 # define RIGHT 124
 # define LEFT 123
 
-# define R 15
-# define G 5
-# define B 11
-# define C 8
-
 # define SPACE 49
 # define ENTER 36
 # define ESC 53
-# define DIV 75
-# define MUL 67
 
-# define MORE 69
-# define LESS 78
 # define RPX 37
 # define RMX 38
 # define RPY 34
 # define RMY 40
-
-typedef struct			s_mlx
-{
-	void				*mlx_ptr;
-	void				*win_ptr;
-	int					endian;
-	int					sl;
-	int					bpp;
-}						t_mlx;
-
-typedef struct			s_env
-{
-	int					screen_height;
-	int					screen_width;
-}						t_env;
-
-typedef struct			s_editor
-{
-	int					menu;
-}						t_editor;
 
 typedef struct			s_lines
 {
@@ -112,7 +85,23 @@ typedef struct			s_img
 	int					bpp;
 	int					size_line;
 	int					endian;
+	float				rayangle;
+	float				disttowall;
+	int					linePos;
+	int					hitwall;
+	int					testX;
+	int					testY;
 }						t_img;
+
+typedef struct			s_player
+{
+	float				xPos;
+	float				yPos;
+	float				angle;
+	float				fov;
+	float				eyeX;
+	float				eyeY;
+}						t_player;
 
 typedef	struct			s_data
 {
@@ -126,6 +115,8 @@ typedef	struct			s_data
 	int					**tab;
 	int					proj;
 	int					kc;
+	int					depth;
+	struct s_player		player;
 	struct s_lines		*begin;
 	struct s_pt			pt;
 	struct s_pos		pos;
@@ -137,14 +128,6 @@ typedef	struct			s_data
 	int					start;
 	int					linlen;
 }						t_data;
-
-typedef struct			s_wolf
-{
-	t_env				env;
-	t_mlx				mlx;
-	t_editor			editor;
-	int					fd;
-}						t_wolf;
 
 t_lines					read_arg(char **argv, t_lines begin, t_data *data);
 t_lines					set_chain(int fd, t_lines begin, t_data *data);
@@ -160,9 +143,6 @@ int						ft_display(t_data *data);
 int						ft_getkey(int kc, t_data *data);
 
 void					ft_keypad(int kc, t_data *data);
-void					ft_keyzoom(int kc, t_data *data);
-void					ft_switchproj(t_data *data);
-void					ft_keycolor(int lc, t_data *data);
 void					ft_keymove(int kc, t_data *data);
 
 void					ft_initwin(t_data *data);
@@ -177,5 +157,8 @@ void					read_fail(void);
 void					invalid_map(void);
 void					open_fail(void);
 void					fd_empty(void);
+
+void					ft_playerdata(t_data *data);
+void					ft_drawimg(t_data *data);
 
 #endif

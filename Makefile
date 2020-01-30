@@ -6,7 +6,7 @@
 #    By: rkergast <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/24 16:06:19 by rkergast          #+#    #+#              #
-#    Updated: 2020/01/29 16:41:52 by rkergast         ###   ########.fr        #
+#    Updated: 2020/01/30 14:39:42 by rkergast         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ ft_settab.c\
 ft_initmlx.c\
 ft_getkey.c\
 ft_setkey.c\
-ft_error.c
+ft_error.c\
+ft_drawimg.c\
+ft_player.c
 endef
 
 CC = gcc
