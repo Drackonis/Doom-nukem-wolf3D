@@ -6,7 +6,7 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 17:02:26 by rkergast          #+#    #+#             */
-/*   Updated: 2020/01/30 14:55:48 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/02/05 13:10:27 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,8 @@ typedef	struct			s_data
 	struct s_pos		pos;
 	struct s_color		color;
 	struct s_img		img;
+	int					ceiling;
+	int					floor;
 	int					heightcoef;
 	int					ret;
 	int					idx;

@@ -6,7 +6,7 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 13:08:06 by rkergast          #+#    #+#             */
-/*   Updated: 2020/01/30 13:35:55 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/02/05 15:54:16 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,20 @@
 
 void	ft_keymove(int kc, t_data *data)
 {
-	if (kc == DOWN)
-		data->pos.iy += data->space;
-	else if (kc == UP)
-		data->pos.iy -= data->space;
+	if (kc == UP)
+	{
+		data->player.xPos += sin(data->player.angle) * 0.2f;
+		data->player.yPos += cos(data->player.angle) * 0.2f;
+	}
+	else if (kc == DOWN)
+	{
+		data->player.xPos -= sin(data->player.angle) * 0.2f;
+		data->player.yPos -= cos(data->player.angle) * 0.2f;
+	}
 	else if (kc == RIGHT)
-		data->pos.ix += data->space;
+		data->player.angle -= 0.05;
 	else if (kc == LEFT)
-		data->pos.ix -= data->space;
+		data->player.angle += 0.05;
 }
 
 void	ft_keypad(int kc, t_data *data)
