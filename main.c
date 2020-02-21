@@ -6,7 +6,7 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 14:20:04 by rkergast          #+#    #+#             */
-/*   Updated: 2020/01/30 15:04:28 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/02/21 16:40:00 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,15 @@ void	printmap(t_data *data)
 	printf("xPos : %f | yPos %f\n", data->player.xPos, data->player.yPos);
 }
 
+void	ft_gettexture(t_data *data)
+{
+	data->tex.tex = mlx_xpm_file_to_image(&data->mlx_ptr, "./Texture.xpm",
+			&data->tex.widthTex, &data->tex.heighTex);
+	data->tex.textab = mlx_get_data_addr(data->tex.tex, 
+			&data->tex.bits_per_pixel, &data->tex.size_line, &data->tex.endian);
+	printf("size_line %d | endian %d | bit/pix %d\n", data->tex.size_line, data->tex.endian, data->tex.bits_per_pixel);
+}
+
 int		main(int ac, char **av)
 {
 	t_lines		begin;
@@ -60,15 +69,15 @@ int		main(int ac, char **av)
 		begin = read_arg(av, begin, &data);
 		data.begin = &begin;
 		data.tab = ft_settab(&begin, &data);
-
+		printmap(&data);
 		if (!data.tab)
 		{
 			write(1, "Invalide Map !\n", 15);
 			return (0);
 		}
 		ft_playerdata(&data);
+		ft_gettexture(&data);
 		ft_initmlx(&data);
-		printmap(&data);
 	}
 
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 17:02:26 by rkergast          #+#    #+#             */
-/*   Updated: 2020/02/05 13:10:27 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:45:23 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@
 # define RMX 38
 # define RPY 34
 # define RMY 40
+
+# define FLOOR_R 1
+# define FLOOR_G 1
+# define FLOOR_B 1
+# define SKY_R 0
+# define SKY_G 0
+# define SKY_B 1
 
 typedef struct			s_lines
 {
@@ -97,11 +104,27 @@ typedef struct			s_player
 {
 	float				xPos;
 	float				yPos;
+	float				lastXPos;
+	float				lastYPos;
 	float				angle;
 	float				fov;
 	float				eyeX;
 	float				eyeY;
 }						t_player;
+
+typedef	struct			s_tex
+{
+	void				*tex;
+	char				*textab;
+	int					bits_per_pixel;
+	int					size_line;
+	int					endian;
+	int					widthTex;
+	int					heighTex;
+	int					r;
+	int					g;
+	int					b;
+}						t_tex;
 
 typedef	struct			s_data
 {
@@ -122,6 +145,7 @@ typedef	struct			s_data
 	struct s_pos		pos;
 	struct s_color		color;
 	struct s_img		img;
+	struct s_tex		tex;
 	int					ceiling;
 	int					floor;
 	int					heightcoef;
@@ -146,6 +170,7 @@ int						ft_getkey(int kc, t_data *data);
 
 void					ft_keypad(int kc, t_data *data);
 void					ft_keymove(int kc, t_data *data);
+void					ft_checkcolide(t_data *data);
 
 void					ft_initwin(t_data *data);
 void					ft_setwin(t_data *data);
