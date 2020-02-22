@@ -6,7 +6,7 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 14:38:26 by rkergast          #+#    #+#             */
-/*   Updated: 2020/02/22 16:02:30 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/02/22 17:15:28 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,21 @@ void		ft_getTextureColor(t_data *data, int heigh)
 	data->tex.sampleY = ((float)heigh - (float)data->ceiling) /
 		((float)data->floor - (float)data->ceiling);
 //printf("Lin : %d | Hei : %d\n", data->img.linePos, heigh);
-	data->tex.r = (data->tex.sampleX * data->tex.size_line) + (data->tex.sampleY * 4) + 2;
-	data->tex.g = (data->tex.sampleX * data->tex.size_line) + (data->tex.sampleY * 4) + 1;
-	data->tex.b = (data->tex.sampleX * data->tex.size_line) + (data->tex.sampleY * 4);
+	
+	//data->tex.r = data->tex.textab[(int)(data->tex.sampleY * W_WIDTH + data->tex.sampleX + 2)];
+	//data->tex.g = data->tex.textab[(int)(data->tex.sampleY * W_WIDTH + data->tex.sampleX + 1)];
+	//data->tex.b = data->tex.textab[(int)(data->tex.sampleY * W_WIDTH + data->tex.sampleX)];
+
+	data->tex.r = data->tex.textab[(int)(data->tex.sampleX * data->tex.size_line) + (int)(data->tex.sampleY * 4) + 2];
+	data->tex.g = data->tex.textab[(int)(data->tex.sampleX * data->tex.size_line) + (int)(data->tex.sampleY * 4) + 1];
+	data->tex.b = data->tex.textab[(int)(data->tex.sampleX * data->tex.size_line) + (int)(data->tex.sampleY * 4)];
+
+	//data->tex.r = (data->tex.size_line) + (data->tex.sampleY * W_WIDTH + data->tex.sampleX) + 2;
+	//data->tex.g = (data->tex.size_line) + (data->tex.sampleY * W_WIDTH + data->tex.sampleX) + 1;
+	//data->tex.b = (data->tex.size_line) + (data->tex.sampleY * W_WIDTH + data->tex.sampleX);
+
+	//data->tex.g = (data->tex.sampleX * data->tex.size_line) + (data->tex.sampleY * 4) + 1;
+	//data->tex.b = (data->tex.sampleX * data->tex.size_line) + (data->tex.sampleY * 4);
 }
 
 
@@ -70,9 +82,9 @@ void		ft_putline(t_data *data)
 	data->ceiling = (float)(data->winheight / 2) - data->winheight
 		/ (float)data->img.disttowall;
 	data->floor = data->winheight - data->ceiling;
-	//data->tex.r = data->img.disttowall * 20 < 255 ? 255 - (data->img.disttowall * 20) : 0;
-	//data->tex.g = data->img.disttowall * 20 < 255 ? 255 - (data->img.disttowall * 20) : 0;
-	//data->tex.b = data->img.disttowall * 20 < 255 ? 255 - (data->img.disttowall * 20) : 0;
+	data->tex.r = data->img.disttowall * 20 < 255 ? 255 - (data->img.disttowall * 20) : 0;
+	data->tex.g = data->img.disttowall * 20 < 255 ? 255 - (data->img.disttowall * 20) : 0;
+	data->tex.b = data->img.disttowall * 20 < 255 ? 255 - (data->img.disttowall * 20) : 0;
 	while (i < data->winheight - 1)
 	{
 		r = (( data->winwidth - data->img.linePos) * (data->img.bpp / 8)) + (i * data->img.size_line);
@@ -85,7 +97,7 @@ void		ft_putline(t_data *data)
 		}
 		else if (i > data->ceiling && i < data->floor)
 		{
-			ft_getTextureColor(data, i);
+			//ft_getTextureColor(data, i);
 			data->img.data[r] = data->tex.b;
 			data->img.data[r + 1] = data->tex.g;
 			data->img.data[r + 2] = data->tex.r;

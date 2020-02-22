@@ -6,7 +6,7 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 14:20:04 by rkergast          #+#    #+#             */
-/*   Updated: 2020/02/22 14:41:18 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/02/22 17:01:21 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	printmap(t_data *data)
 
 void	ft_gettexture(t_data *data)
 {
-	data->tex.tex = mlx_xpm_file_to_image(&data->mlx_ptr, "./Texture.xpm",
+	data->tex.tex = mlx_xpm_file_to_image(&data->mlx_ptr, "./Texture2.xpm",
 			&data->tex.widthTex, &data->tex.heighTex);
 	data->tex.textab = mlx_get_data_addr(data->tex.tex, 
 			&data->tex.bits_per_pixel, &data->tex.size_line, &data->tex.endian);
