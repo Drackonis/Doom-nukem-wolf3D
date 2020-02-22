@@ -6,7 +6,7 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 17:02:26 by rkergast          #+#    #+#             */
-/*   Updated: 2020/02/21 17:45:23 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/02/22 15:54:18 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@
 # define W_WIDTH 1280
 # define W_HEIGHT 720
 
-# define UP 126
-# define DOWN 125
-# define RIGHT 124
-# define LEFT 123
+# define UP 13
+# define DOWN 1
+# define RIGHT 2
+# define LEFT 0
+# define LSTRAF 12
+# define RSTRAF 14
 
 # define SPACE 49
 # define ENTER 36
@@ -41,12 +43,12 @@
 # define RPY 34
 # define RMY 40
 
-# define FLOOR_R 1
-# define FLOOR_G 1
-# define FLOOR_B 1
-# define SKY_R 0
-# define SKY_G 0
-# define SKY_B 1
+# define FLOOR_R 50
+# define FLOOR_G 50
+# define FLOOR_B 50
+# define SKY_R 70
+# define SKY_G 70
+# define SKY_B 120
 
 typedef struct			s_lines
 {
@@ -110,6 +112,10 @@ typedef struct			s_player
 	float				fov;
 	float				eyeX;
 	float				eyeY;
+	float				tx;
+	float				ty;
+	float				bmx;
+	float				bmy;
 }						t_player;
 
 typedef	struct			s_tex
@@ -124,6 +130,8 @@ typedef	struct			s_tex
 	int					r;
 	int					g;
 	int					b;
+	float				sampleX;
+	float				sampleY;
 }						t_tex;
 
 typedef	struct			s_data

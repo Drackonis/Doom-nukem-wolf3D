@@ -6,7 +6,7 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 13:08:06 by rkergast          #+#    #+#             */
-/*   Updated: 2020/02/21 15:20:06 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/02/22 15:09:45 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,16 @@ void	ft_checkcolide(t_data *data)
 	else
 		y = (int)data->player.yPos;*/
 
-	printf("%d | %f | %f\n",(int)data->player.xPos ,data->player.xPos, data->player.xPos - (int)data->player.xPos);
-	//printf("X : %d | Y : %d\n", (int)data->player.xPos, (int)data->player.yPos);
-	//printf("float : %f | int : %d\n", data->player.xPos, (int)data->player.xPos);
-	if (data->tab[(int)data->player.xPos][(int)data->player.yPos] == 1)
+	if (data->tab[(int)data->player.lastYPos][(int)data->player.xPos] == 1)
 	{
 		data->player.xPos = data->player.lastXPos;
+	}
+	if (data->tab[(int)data->player.yPos][(int)data->player.lastXPos] == 1)
+	{
 		data->player.yPos = data->player.lastYPos;
 	}
 }
+
 
 void	ft_keymove(int kc, t_data *data)
 {
@@ -44,15 +45,25 @@ void	ft_keymove(int kc, t_data *data)
 		data->player.xPos += sin(data->player.angle) * 0.2f;
 		data->player.yPos += cos(data->player.angle) * 0.2f;
 	}
-	else if (kc == DOWN)
+	if (kc == DOWN)
 	{
 		data->player.xPos -= sin(data->player.angle) * 0.2f;
 		data->player.yPos -= cos(data->player.angle) * 0.2f;
 	}
-	else if (kc == RIGHT)
-		data->player.angle -= 0.05;
-	else if (kc == LEFT)
-		data->player.angle += 0.05;
+	if (kc == RIGHT)
+		data->player.angle -= 0.08;
+	if (kc == LEFT)
+		data->player.angle += 0.08;
+	if (kc == RSTRAF)
+	{
+		data->player.yPos += sin(data->player.angle) * 0.2f;
+		data->player.xPos -= cos(data->player.angle) * 0.2f;
+	}
+	if (kc == LSTRAF)
+	{
+		data->player.yPos -= sin(data->player.angle) * 0.2f;
+		data->player.xPos += cos(data->player.angle) * 0.2f;
+	}
 	ft_checkcolide(data);
 }
 

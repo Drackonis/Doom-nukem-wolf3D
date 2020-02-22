@@ -6,7 +6,7 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 14:38:26 by rkergast          #+#    #+#             */
-/*   Updated: 2020/02/21 17:44:55 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/02/22 16:02:30 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,27 @@ void		ft_checkwall(t_data *data)
 
 void		ft_getTextureColor(t_data *data, int heigh)
 {
-	data->tex.r = (data->img.linePos * data->img.size_line) + (heigh * 4) + 2;
-	data->tex.g = (data->img.linePos * data->img.size_line) + (heigh * 4) + 1;
-	data->tex.b = (data->img.linePos * data->img.size_line) + (heigh * 4);
+	float angleTest;
+
+	data->player.bmx = (float)data->img.testX + 0.5f;
+	data->player.bmy = (float)data->img.testY + 0.5f;
+	data->player.tx = data->player.xPos + data->player.eyeX * data->img.disttowall;
+	data->player.ty = data->player.yPos + data->player.eyeY * data->img.disttowall;
+	angleTest = atan2f((data->img.testY - data->player.bmy), (data->img.testX * data->player.bmx));
+	if (angleTest >= -3.14159f * 0.25f && angleTest < 3.14159f * 0.25f)
+		data->tex.sampleX = data->player.ty - (float)data->img.testY;
+	if (angleTest >= 3.14159f * 0.25f && angleTest < 3.14159f * 0.75f)
+		data->tex.sampleX = data->player.tx - (float)data->img.testX;
+	if (angleTest < -3.14159f * 0.25f && angleTest >= -3.14159f * 0.75f)
+		data->tex.sampleX = data->player.tx - (float)data->img.testX;
+	if (angleTest >= 3.14159f * 0.75f && angleTest < -3.14159f * 0.75f)
+		data->tex.sampleX = data->player.ty - (float)data->img.testY;
+	data->tex.sampleY = ((float)heigh - (float)data->ceiling) /
+		((float)data->floor - (float)data->ceiling);
+//printf("Lin : %d | Hei : %d\n", data->img.linePos, heigh);
+	data->tex.r = (data->tex.sampleX * data->tex.size_line) + (data->tex.sampleY * 4) + 2;
+	data->tex.g = (data->tex.sampleX * data->tex.size_line) + (data->tex.sampleY * 4) + 1;
+	data->tex.b = (data->tex.sampleX * data->tex.size_line) + (data->tex.sampleY * 4);
 }
 
 
@@ -52,17 +70,18 @@ void		ft_putline(t_data *data)
 	data->ceiling = (float)(data->winheight / 2) - data->winheight
 		/ (float)data->img.disttowall;
 	data->floor = data->winheight - data->ceiling;
-	//r = data->img.disttowall * 20 < 255 ? 255 - (data->img.disttowall * 20) : 0;
+	//data->tex.r = data->img.disttowall * 20 < 255 ? 255 - (data->img.disttowall * 20) : 0;
+	//data->tex.g = data->img.disttowall * 20 < 255 ? 255 - (data->img.disttowall * 20) : 0;
+	//data->tex.b = data->img.disttowall * 20 < 255 ? 255 - (data->img.disttowall * 20) : 0;
 	while (i < data->winheight - 1)
 	{
-		
 		r = (( data->winwidth - data->img.linePos) * (data->img.bpp / 8)) + (i * data->img.size_line);
 		//printf("I = %d | r = %d\n", i , data->winwidth - data->img.linePos);
-		if (i > data->floor)
+		if (i > data->floor - 1)
 		{
-			data->img.data[r] = FLOOR_R;
+			data->img.data[r + 2] = FLOOR_R;
 			data->img.data[r + 1] = FLOOR_G;
-			data->img.data[r + 2] = FLOOR_B;
+			data->img.data[r] = FLOOR_B;
 		}
 		else if (i > data->ceiling && i < data->floor)
 		{
@@ -73,9 +92,9 @@ void		ft_putline(t_data *data)
 		}
 		else
 		{
-			data->img.data[r] = SKY_R;
+			data->img.data[r + 2] = SKY_R;
 			data->img.data[r + 1] = SKY_G;
-			data->img.data[r + 2] = SKY_B;
+			data->img.data[r] = SKY_B;
 		}
 		i++;
 	}

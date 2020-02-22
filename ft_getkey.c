@@ -6,7 +6,7 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 12:47:40 by rkergast          #+#    #+#             */
-/*   Updated: 2020/02/21 17:36:07 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/02/22 14:57:56 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int		ft_getkey(int kc, t_data *data)
 {
-	if (kc == UP || kc == DOWN || kc == RIGHT || kc == LEFT)
+	//printf("key %d\n", kc);
+	if (kc == UP || kc == DOWN || kc == RIGHT || kc == LEFT || kc == LSTRAF
+			|| kc == RSTRAF)
 		ft_keymove(kc, data);
 	else if (kc == ENTER)
 		ft_initwin(data);
