@@ -6,7 +6,7 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 17:02:26 by rkergast          #+#    #+#             */
-/*   Updated: 2020/02/22 15:54:18 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/02/25 12:54:33 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,9 @@ typedef struct			s_img
 	int					hitwall;
 	int					testX;
 	int					testY;
+	int					r;
+	int					g;
+	int					b;
 }						t_img;
 
 typedef struct			s_player
@@ -122,6 +125,7 @@ typedef	struct			s_tex
 {
 	void				*tex;
 	char				*textab;
+	int					block_side;
 	int					bits_per_pixel;
 	int					size_line;
 	int					endian;
@@ -153,7 +157,10 @@ typedef	struct			s_data
 	struct s_pos		pos;
 	struct s_color		color;
 	struct s_img		img;
-	struct s_tex		tex;
+	struct s_tex		tex1;
+	struct s_tex		tex2;
+	struct s_tex		tex3;
+	struct s_tex		tex4;
 	int					ceiling;
 	int					floor;
 	int					heightcoef;
