@@ -6,7 +6,7 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 11:14:05 by rkergast          #+#    #+#             */
-/*   Updated: 2020/03/10 11:30:29 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/03/10 11:55:13 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void			ft_checkwall(t_data *data)
 		data->img.hitwall = 1;
 		while (data->tab[data->img.testY][data->img.testX] == 1)
 		{
-			data->img.disttowall -= 0.0001f;
+			data->img.disttowall -= 0.00005f;
 			data->img.testX = (int)(data->player.xPos +
 				data->player.eyeX * data->img.disttowall);
 			data->img.testY = (int)(data->player.yPos +

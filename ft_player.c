@@ -6,7 +6,7 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 13:44:40 by rkergast          #+#    #+#             */
-/*   Updated: 2020/03/10 10:54:26 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/03/10 12:13:11 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ void		ft_setstartpos(t_data *data)
 		j = 0;
 		while (j < data->nbcol && t == 0)
 		{
-			if (data->tab[i][j] == 0)
+			if (data->tab[i][j] == 0 && data->tab[i - 1][j] == 0 &&
+					data->tab[i + 1][j] == 0 && data->tab[i][j - 1] == 0 &&
+					data->tab[i][j + 1] == 0)
 			{
 				data->player.yPos = (float)i;
 				data->player.xPos = (float)j;
