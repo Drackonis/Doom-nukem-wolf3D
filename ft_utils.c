@@ -6,7 +6,7 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 11:14:05 by rkergast          #+#    #+#             */
-/*   Updated: 2020/03/10 11:55:13 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/03/10 13:11:24 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,5 @@ void			ft_putline(t_data *data)
 void			malloc_error(void)
 {
 	write(1, "Malloc Error !\n", 15);
+	exit(0);
 }

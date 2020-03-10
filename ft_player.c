@@ -6,11 +6,38 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 13:44:40 by rkergast          #+#    #+#             */
-/*   Updated: 2020/03/10 12:13:11 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/03/10 13:07:32 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+void		ft_errorstartpos(t_data *data)
+{
+	int i;
+	int t;
+	int j;
+
+	i = 0;
+	t = 0;
+	while (i < data->nblin && t == 0)
+	{
+		j = 0;
+		while (j < data->nbcol && t == 0)
+		{
+			if (data->tab[i][j] == 0)
+			{
+				data->player.yPos = (float)i + 0.5f;
+				data->player.xPos = (float)j + 0.5f;
+				t++;
+			}
+			j++;
+		}
+		i++;
+	}
+	if (t == 0)
+		invalid_map(data);
+}
 
 void		ft_setstartpos(t_data *data)
 {
@@ -37,6 +64,8 @@ void		ft_setstartpos(t_data *data)
 		}
 		i++;
 	}
+	if (t == 0)
+		ft_errorstartpos(data);
 }
 
 void		ft_playerdata(t_data *data)

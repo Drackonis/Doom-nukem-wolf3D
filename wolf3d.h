@@ -6,7 +6,7 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 17:02:26 by rkergast          #+#    #+#             */
-/*   Updated: 2020/03/10 11:29:29 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/03/10 13:09:29 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,7 +199,7 @@ int						ft_initmlx(t_data *data);
 void					ft_mallocerror(int **tab);
 void					malloc_error(void);
 void					read_fail(void);
-void					invalid_map(void);
+void					invalid_map(t_data *data);
 void					open_fail(void);
 void					fd_empty(void);
 

@@ -6,7 +6,7 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 13:08:06 by rkergast          #+#    #+#             */
-/*   Updated: 2020/03/10 10:56:30 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/03/10 12:22:19 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ void	ft_keymove(int kc, t_data *data)
 	data->player.lastYPos = data->player.yPos;
 	if (kc == UP)
 	{
-		data->player.xPos += sin(data->player.angle) * 0.2f;
-		data->player.yPos += cos(data->player.angle) * 0.2f;
+		data->player.xPos += sin(data->player.angle) * 0.4f;
+		data->player.yPos += cos(data->player.angle) * 0.4f;
 	}
 	if (kc == DOWN)
 	{
-		data->player.xPos -= sin(data->player.angle) * 0.2f;
-		data->player.yPos -= cos(data->player.angle) * 0.2f;
+		data->player.xPos -= sin(data->player.angle) * 0.4f;
+		data->player.yPos -= cos(data->player.angle) * 0.4f;
 	}
 	if (kc == RIGHT || kc == LEFT)
 		data->player.angle += (kc == RIGHT ? -0.08f : 0.08f);

@@ -6,7 +6,7 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:50:09 by rkergast          #+#    #+#             */
-/*   Updated: 2020/03/10 11:27:09 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/03/10 13:07:13 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ void				read_fail(void)
 	exit(0);
 }
 
-void				invalid_map(void)
+void				invalid_map(t_data *data)
 {
+	free(data->tab);
 	write(1, "Invalide Map !\n", 15);
 	exit(0);
 }
