@@ -6,7 +6,7 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 17:02:26 by rkergast          #+#    #+#             */
-/*   Updated: 2020/02/25 12:54:33 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/03/10 11:29:29 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,8 @@ typedef	struct			s_data
 	int					idx;
 	int					start;
 	int					linlen;
+	int					bound;
+	int					lastSide;
 }						t_data;
 
 t_lines					read_arg(char **argv, t_lines begin, t_data *data);
@@ -194,6 +196,7 @@ void					ft_setzoom(t_data *data);
 
 int						ft_initmlx(t_data *data);
 
+void					ft_mallocerror(int **tab);
 void					malloc_error(void);
 void					read_fail(void);
 void					invalid_map(void);
@@ -201,6 +204,9 @@ void					open_fail(void);
 void					fd_empty(void);
 
 void					ft_playerdata(t_data *data);
-void					ft_drawimg(t_data *data);
+void					ft_drawlines(t_data *data);
+void					ft_checkwall(t_data *data);
+void					ft_putline(t_data *data);
+void					ft_gettexturecolor(t_data *data, int heigh);
 
 #endif

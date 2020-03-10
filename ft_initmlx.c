@@ -6,19 +6,19 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 13:47:21 by rkergast          #+#    #+#             */
-/*   Updated: 2020/02/05 15:29:14 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/03/10 10:53:40 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void ft_setscreen(t_data *data)
+void	ft_setscreen(t_data *data)
 {
 	data->winheight = 1080;
 	data->winwidth = 1920;
 }
 
-void ft_initwin(t_data *data)
+void	ft_initwin(t_data *data)
 {
 	data->proj = 0;
 }
@@ -30,8 +30,7 @@ int		ft_initmlx(t_data *data)
 	ft_initwin(data);
 	data->win_ptr = mlx_new_window(data->mlx_ptr, data->winwidth,\
 			data->winheight, "WOLF3D");
-	mlx_hook(data->win_ptr, 2, (1L << 0),  ft_getkey, data);
-	//mlx_key_hook(data->win_ptr, ft_getkey, data);
+	mlx_hook(data->win_ptr, 2, (1L << 0), ft_getkey, data);
 	mlx_expose_hook(data->win_ptr, ft_display, data);
 	mlx_loop(data->mlx_ptr);
 	return (0);

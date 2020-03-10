@@ -6,15 +6,14 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 12:47:40 by rkergast          #+#    #+#             */
-/*   Updated: 2020/02/22 14:57:56 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/03/10 11:09:42 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int		ft_getkey(int kc, t_data *data)
+int			ft_getkey(int kc, t_data *data)
 {
-	//printf("key %d\n", kc);
 	if (kc == UP || kc == DOWN || kc == RIGHT || kc == LEFT || kc == LSTRAF
 			|| kc == RSTRAF)
 		ft_keymove(kc, data);
@@ -28,13 +27,13 @@ int		ft_getkey(int kc, t_data *data)
 	return (0);
 }
 
-int		ft_display(t_data *data)
+int			ft_display(t_data *data)
 {
 	data->img.img_ptr = mlx_new_image(data->mlx_ptr, data->winwidth,\
 			data->winheight);
 	data->img.data = mlx_get_data_addr(data->img.img_ptr, &data->img.bpp,\
 			&data->img.size_line, &data->img.endian);
-	ft_drawimg(data);
+	ft_drawlines(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,\
 			data->img.img_ptr, 0, 0);
 	mlx_destroy_image(data->mlx_ptr, data->img.img_ptr);

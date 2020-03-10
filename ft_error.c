@@ -6,14 +6,15 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:50:09 by rkergast          #+#    #+#             */
-/*   Updated: 2020/01/29 16:32:37 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/03/10 11:27:09 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void				malloc_error(void)
+void				ft_mallocerror(int **tab)
 {
+	free(tab);
 	write(1, "Malloc Error !\n", 15);
 	exit(0);
 }

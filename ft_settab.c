@@ -6,18 +6,11 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 13:15:56 by rkergast          #+#    #+#             */
-/*   Updated: 2020/01/29 17:48:19 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/03/10 11:27:18 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-
-void		ft_mallocerror(int **tab)
-{
-	free(tab);
-	write(1, "Malloc Error !\n", 15);
-	exit(0);
-}
 
 int			isnb(char c)
 {
@@ -52,8 +45,9 @@ int			count_number(char *line)
 int			atoi_modif(char *c)
 {
 	int i;
+
 	i = c[0] - '0';
-	return(i);
+	return (i);
 }
 
 int			*fill_line(t_lines *line)
@@ -76,9 +70,7 @@ int			*fill_line(t_lines *line)
 		else if (isnb(*current))
 		{
 			tab[j] = atoi_modif(current);
-			//tab[j] = ft_atoi(current);
 			j++;
-			//while (isnb(*current) && *current)
 			current++;
 		}
 	}

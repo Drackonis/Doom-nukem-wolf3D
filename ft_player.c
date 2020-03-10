@@ -6,13 +6,13 @@
 /*   By: rkergast <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 13:44:40 by rkergast          #+#    #+#             */
-/*   Updated: 2020/02/22 15:13:21 by rkergast         ###   ########.fr       */
+/*   Updated: 2020/03/10 10:54:26 by rkergast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void		ft_setStartPos(t_data *data)
+void		ft_setstartpos(t_data *data)
 {
 	int i;
 	int t;
@@ -35,7 +35,6 @@ void		ft_setStartPos(t_data *data)
 		}
 		i++;
 	}
-
 }
 
 void		ft_playerdata(t_data *data)
@@ -64,5 +63,5 @@ void		ft_playerdata(t_data *data)
 		}
 		i++;
 	}
-	(t == 0 ? ft_setStartPos(data) : t++);
+	(t == 0 ? ft_setstartpos(data) : t++);
 }
